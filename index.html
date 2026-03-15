@@ -25,6 +25,23 @@
     tg.expand();
   }
 </script>
+ <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+  const tg = window.Telegram?.WebApp;
+
+  if (tg) {
+    tg.ready();
+    tg.expand();
+
+    try {
+      if (typeof tg.requestFullscreen === "function" && !tg.isFullscreen) {
+        tg.requestFullscreen();
+      }
+    } catch (e) {
+      console.log("Fullscreen request failed:", e);
+    }
+  }
+</script>
  <body>
 <div id="root"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
